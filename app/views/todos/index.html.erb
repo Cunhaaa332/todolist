@@ -1,16 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Todos" %>
+<% content_for :title, "Tarefas" %>
 
-<h1>Todos</h1>
+<h1>Tarefas</h1>
 
 <div id="todos">
   <% @todos.each do |todo| %>
     <%= render todo %>
     <p>
-      <%= link_to "Show this todo", todo %>
+      <%= link_to "Detalhes da tarefa", todo %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New todo", new_todo_path %>
+<%= link_to "Nova Tarefa", new_todo_path %>

@@ -3,8 +3,8 @@
 <%= render @todo %>
 
 <div>
-  <%= link_to "Edit this todo", edit_todo_path(@todo) %> |
-  <%= link_to "Back to todos", todos_path %>
+  <%= link_to "Editar", edit_todo_path(@todo) %> |
+  <%= link_to "Voltar para lista de tarefas", todos_path %>
 
-  <%= button_to "Destroy this todo", @todo, method: :delete %>
+  <%= button_to "Excluir tarefa", @todo, method: :delete %>
 </div>
