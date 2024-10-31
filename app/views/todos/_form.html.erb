@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label "Status", style: "display: block" %>
+    <%= form.select :status, options_for_select([["Pendente", :pending],["Em progresso", :in_progress],["Feito", :done], ["Cancelada", :failed]]) %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

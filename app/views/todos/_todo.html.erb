@@ -9,4 +9,12 @@
     <%= todo.body %>
   </p>
 
+  <p>
+    <strong>Status da tarefa:</strong>
+    <%= 'Pendente' if todo.status == 'pending' %>
+    <%= 'Em Progresso' if todo.status == 'in_progress' %>
+    <%= 'Feito' if todo.status == 'done' %>
+    <%= 'Não Relizado' if todo.status == 'failed' %>
+  </p>
+
 </div>
