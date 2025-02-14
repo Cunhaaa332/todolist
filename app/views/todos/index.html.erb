@@ -14,7 +14,10 @@
       <% @todos.each do |todo| %>
       <tr onclick="location.href='todos/<%= todo.id %>'" >
             <td ><%= todo.title %></td>
-            <td><%= todo.status %></td>
+            <%= content_tag(:td, 'Pendente', class: "list-group-item bg-warning", id: nil, data: nil) if todo.status == 'pending' %>
+            <%= content_tag(:td, 'Em progresso', class: "list-group-item bg-primary text-light", id: nil, data: nil) if todo.status == 'in_progress'%>
+            <%= content_tag(:td, 'Feito', class: "list-group-item bg-info text-light", id: nil, data: nil) if todo.status == 'done'%>
+            <%= content_tag(:td, 'Não realiado', class: "list-group-item bg-danger", id: nil, data: nil) if todo.status == 'failed' %> </li></td>
           </tr>
        <% end %>
     </tbody>
