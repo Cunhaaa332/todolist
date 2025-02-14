@@ -1,20 +1,21 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Tarefa:</strong>
-    <%= todo.title %>
-  </p>
-
-  <p>
-    <strong>Descrição:</strong>
-    <%= todo.body %>
-  </p>
-
-  <p>
-    <strong>Status da tarefa:</strong>
-    <%= 'Pendente' if todo.status == 'pending' %>
-    <%= 'Em Progresso' if todo.status == 'in_progress' %>
-    <%= 'Feito' if todo.status == 'done' %>
-    <%= 'Não Relizado' if todo.status == 'failed' %>
-  </p>
-
+<div id="<%= dom_id todo %>", class="card mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    <h5 class="card-title"> <%= todo.title %> </h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= todo.body %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+     <%= content_tag(:li, 'Pendente', class: "list-group-item bg-warning", id: nil, data: nil) if todo.status == 'pending' %>
+    <%= content_tag(:li, 'Em progresso', class: "list-group-item bg-primary text-light", id: nil, data: nil) if todo.status == 'in_progress'%>
+    <%= content_tag(:li, 'Feito', class: "list-group-item bg-info text-light", id: nil, data: nil) if todo.status == 'done'%>
+    <%= content_tag(:li, 'Não realiado', class: "list-group-item bg-danger", id: nil, data: nil) if todo.status == 'failed' %> </li>
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2 p-2 g-col-6" role="group" aria-label="First group">
+        <%= link_to "Editar", edit_todo_path(@todo), class:"btn btn-warning" %> 
+    </div>
+    <div class="btn-group mr-2 p-2 g-col-6" role="group" aria-label="Second group">
+        <%= button_to "Excluir tarefa", @todo, method: :delete, class:"btn btn-danger" %>
+    </div>
+  </div>
 </div>

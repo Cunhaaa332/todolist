@@ -1,10 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @todo %>
-
-<div>
-  <%= link_to "Editar", edit_todo_path(@todo) %> |
-  <%= link_to "Voltar para lista de tarefas", todos_path %>
-
-  <%= button_to "Excluir tarefa", @todo, method: :delete %>
+<div class="row-gap-3">
+  <div class="p-2">
+    <%= render @todo %>
+  </div>
 </div>
