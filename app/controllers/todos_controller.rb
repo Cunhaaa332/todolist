@@ -6,6 +6,9 @@ class TodosController < ApplicationController
     @todos = Todo.all
   end
 
+  def about
+  end
+
   # GET /todos/1 or /todos/1.json
   def show
   end
