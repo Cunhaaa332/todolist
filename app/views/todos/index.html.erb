@@ -2,15 +2,23 @@
 
 <% content_for :title, "Tarefas" %>
 
-<h1>Tarefas</h1>
+<h1>Suas tarefas</h1>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody> 
+      <% @todos.each do |todo| %>
+      <tr onclick="location.href='todos/<%= todo.id %>'" >
+            <td ><%= todo.title %></td>
+            <td><%= todo.status %></td>
+          </tr>
+       <% end %>
+    </tbody>
+ 
+</table>
 
-<div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Detalhes da tarefa", todo %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "Nova Tarefa", new_todo_path %>
+<%= link_to "Nova Tarefa", new_todo_path, class:"btn btn-success" %>
