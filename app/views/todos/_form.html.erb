@@ -10,23 +10,24 @@
       </ul>
     </div>
   <% end %>
+  <form>
+    <div class="mb-3">
+      <%= form.label "Título", class: "form-label" %>
+      <%= form.text_field :title, class:"form-control",  placeholder: "Insira aqui o título da sua tarefa..." %>
+    </div>
 
-  <div>
-    <%= form.label "Título", style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="mb-3">
+      <%= form.label "Descrição", class: "form-label" %>
+      <%= form.text_area :body, class:"form-control", placeholder: "Insira aqui a descrição da sua tarefa..." %>
+    </div>
 
-  <div>
-    <%= form.label "Descrição", style: "display: block" %>
-    <%= form.text_field :body %>
-  </div>
+    <div class="mb-3">
+      <%= form.label "Status", class: "form-label" %>
+      <%= form.select :status, options_for_select([["Pendente", :pending],["Em progresso", :in_progress],["Feito", :done], ["Cancelada", :failed]]), {}, {:class => "form-select form-select-lg mb-3"} %>
+    </div>
 
-  <div>
-    <%= form.label "Status", style: "display: block" %>
-    <%= form.select :status, options_for_select([["Pendente", :pending],["Em progresso", :in_progress],["Feito", :done], ["Cancelada", :failed]]) %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3">
+      <%= form.submit "Criar tarefa", class: "btn btn-success"%>
+    </div>
+  </form>
 <% end %>
