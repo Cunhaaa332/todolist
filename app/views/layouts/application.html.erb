@@ -12,6 +12,10 @@
   <body>
     <%= render 'todos/navbar' %>
     <div class="container">
+      <% if notice%>
+        <br/>
+        <%= notice.html_safe %>
+      <%end%>
       <br/>
       <%= yield %>
     </div>
