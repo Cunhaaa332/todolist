@@ -1,9 +1,9 @@
-<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid">
-        <%= link_to 'To Do List App', root_path, class:"navbar-brand" %>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-md bg-dark bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <%= link_to 'To Do List App', root_path, class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -11,36 +11,38 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class:"nav-link" %>
-          </li>
-
-          <li class="nav-item">
-              <%= link_to 'Editar conta', edit_user_registration_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
             <%= link_to 'Tarefas', todos_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
               <%= link_to 'Nova Tarefa', new_todo_path, class:"nav-link" %>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Cadastrar-se', new_user_registration_path, class:"nav-link" %>
-          </li>
-
-          <li class="nav-item">
-              <%= link_to 'Entrar', new_user_session_path, class:"nav-link" %>
-          </li>
         <% end %>
-
-        
-        
-
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
+    <button class="btn btn-dark ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><span class="navbar-toggler-icon"></span></button>
   </div>
 </nav>
+
+<div class="offcanvas offcanvas-end text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de conta</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <% if user_signed_in? %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%= link_to 'Editar conta', edit_user_registration_path, class:"btn btn-secondary" %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete, class:"btn btn-secondary mt-3" %>
+      </ul>
+    <% else %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%= link_to 'Cadastrar-se', new_user_registration_path, class:"btn btn-secondary" %>
+        <%= link_to 'Entrar', new_user_session_path, class:"btn btn-secondary mt-3" %>
+      </ul>
+    <% end %>
+  </div>
+</div>
