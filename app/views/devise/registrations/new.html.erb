@@ -1,29 +1,30 @@
-<h2>Sign up</h2>
+<h2>Cadastrar-se</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <form>
+    <div class="mb-3">
+      <%= f.label "E-mail", class: "form-label" %>
+      <%= f.email_field :email, class:"form-control form-control-sm w-50", autofocus: true, autocomplete: "email", placeholder: "Insira aqui o seu e-mail" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="mb-3">
+      <%= f.label "Senha", class: "form-label" %>
+      <% if @minimum_password_length %>
+      <em>(mínimo de <%= @minimum_password_length %> caracteres)</em>
+      <% end %>
+      <%= f.password_field :password, class:"form-control form-control-sm w-50", autocomplete: "new-password", placeholder: "Insira aqui sua senha" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="mb-3">
+      <%= f.label "Confirmar senha", class: "form-label" %>
+      <%= f.password_field :password_confirmation, class:"form-control form-control-sm w-50", autocomplete: "new-password", placeholder: "Insira aqui a mesma senha inserida antes" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Confirmar cadastro", class:"btn btn-primary" %>
+    </div>
+  </form>
 <% end %>
 
 <%= render "devise/shared/links" %>
